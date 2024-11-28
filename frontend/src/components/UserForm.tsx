@@ -44,6 +44,7 @@ const formSchema = z.object({
 })
 
 function UserForm() {
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,10 +62,18 @@ function UserForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    
+    axios.post('/', {
+      ...values,
+      everMarried: values.everMarried === 'Yes',
+      heartDisease: values.heartDisease === 'Yes',
+      hypertension: values.hypertension === 'Yes',
+    }).then(res => {
+      
+    })
   }
 
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <Card className="w-inherit">
@@ -233,7 +242,7 @@ function UserForm() {
                   <SelectContent>
                     <SelectItem value="SelfEmployed">Self-employed</SelectItem>
                     <SelectItem value="Private">Private</SelectItem>
-                    <SelectItem value="GovtJob">Goverment job</SelectItem>
+                    <SelectItem value="GovtJob">Government job</SelectItem>
                     <SelectItem value="Children">Children</SelectItem>
                     <SelectItem value="NeverWorked">Never worked</SelectItem>
                   </SelectContent>
@@ -272,6 +281,7 @@ function UserForm() {
       </Card>
       </form>
     </Form>
+    </>
   )
 }
 
