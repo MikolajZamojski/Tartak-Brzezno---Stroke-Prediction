@@ -65,38 +65,38 @@ function Raport({data, onReturn} : {data: ReturnedData, onReturn: () => void}) {
             </div>
           </CardContent>
         </Card>
-        <Card className={"w-full shadow-md " + (data.everMarried ? "shadow-red-600" : "shadow-green-500")}>
+        <Card className={"w-full shadow-md " + (data.everMarried === 'Yes' ? "shadow-red-600" : "shadow-green-500")}>
           <CardContent className="pt-6">
             <div className="flex gap-4 items-center">
               <span className="text-3xl w-[20%]">💍</span>
               <div className="w-full flex flex-col items-center">
                 <p className="text-lg font-bold">Ever married?</p>
                 <p className="mt-2">Single men/women are <span className="font-bold">6 times less</span> likely to experience stroke.</p>
-                <p className="mt-2">You - Ever married?: <span className={"font-bold " + (data.everMarried ? "text-red-600" : "text-green-500")}>{data.everMarried}</span></p>
+                <p className="mt-2">You - Ever married?: <span className={"font-bold " + (data.everMarried === 'Yes' ? "text-red-600" : "text-green-500")}>{data.everMarried}</span></p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className={"w-full shadow-md " + (data.heartDisease ? "shadow-red-600" : "shadow-green-500")}>
+        <Card className={"w-full shadow-md " + (data.heartDisease === 'Yes' ? "shadow-red-600" : "shadow-green-500")}>
           <CardContent className="pt-6">
             <div className="flex gap-4 items-center">
               <span className="text-3xl w-[20%]">💔</span>
               <div className="w-full flex flex-col items-center">
                 <p className="text-lg font-bold">Heart disease?</p>
                 <p className="mt-2">People with heart disease are <span className="font-bold">4 times more</span> likely to have a stroke.</p>
-                <p className="mt-2">You - Heart disease?: <span className={"font-bold " + (data.heartDisease ? "text-red-600" : "text-green-500")}>{data.heartDisease}</span></p>
+                <p className="mt-2">You - Heart disease?: <span className={"font-bold " + (data.heartDisease === 'Yes' ? "text-red-600" : "text-green-500")}>{data.heartDisease}</span></p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className={"w-full shadow-md " + (data.hypertension ? "shadow-red-600" : "shadow-green-500")}>
+        <Card className={"w-full shadow-md " + (data.hypertension === 'Yes' ? "shadow-red-600" : "shadow-green-500")}>
           <CardContent className="pt-6">
             <div className="flex gap-4 items-center">
               <span className="text-3xl w-[20%]">💥</span>
               <div className="w-full flex flex-col items-center">
                 <p className="text-lg font-bold">Hypertension?</p>
                 <p className="mt-2">People with hypertension are also <span className="font-bold">4 times more</span> likely to have a stroke.</p>
-                <p className="mt-2">You - Hypertension?: <span className={"font-bold " + (data.hypertension ? "text-red-600" : "text-green-500")}>{data.hypertension}</span></p>
+                <p className="mt-2">You - Hypertension?: <span className={"font-bold " + (data.hypertension === 'Yes' ? "text-red-600" : "text-green-500")}>{data.hypertension}</span></p>
               </div>
             </div>
           </CardContent>
