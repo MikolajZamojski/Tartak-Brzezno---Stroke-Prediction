@@ -119,7 +119,7 @@ function Raport({data, onReturn} : {data: ReturnedData, onReturn: () => void}) {
               <span className="text-3xl w-[20%]">👨‍💼</span>
               <div className="w-full flex flex-col items-center">
                 <p className="text-lg font-bold">Work type</p>
-                <p className="mt-2"><span className="bold">Self-employed</span> people are at mosk risk, followed by private and government workers.</p>
+                <p className="mt-2"><span className="font-bold">Self-employed</span> people are at mosk risk, followed by private and government workers.</p>
                 <p className="mt-2">Your work type: <span className={"font-bold " + (data.workType === 'Children' || data.workType === 'NeverWorked' ? "text-green-500" : (data.workType === 'SelfEmployed' ? "text-red-600" : "text-orange-500"))}>{data.workType}</span></p>
               </div>
             </div>
