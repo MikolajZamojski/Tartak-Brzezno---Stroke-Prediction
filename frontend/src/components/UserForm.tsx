@@ -29,9 +29,11 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import axios from "axios"
+import { ReturnedData } from "@/App"
+import { useEffect } from "react"
 
-const formSchema = z.object({
-  gender: z.enum(['Male', 'Female']),
+export const formSchema = z.object({
+  gender: z.enum(['Male', 'Female', 'Other']),
   age: z.coerce.number(),
   hypertension: z.enum(['Yes', 'No']),
   heartDisease: z.enum(['Yes', 'No']),
@@ -43,7 +45,7 @@ const formSchema = z.object({
   smokingStatus: z.enum(['FormerlySmoked', 'NeverSmoked', 'Smokes'])
 })
 
-function UserForm() {
+function UserForm(props: { onSubmit: (data: ReturnedData) => void }) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -68,9 +70,13 @@ function UserForm() {
       heartDisease: values.heartDisease === 'Yes',
       hypertension: values.hypertension === 'Yes',
     }).then(res => {
-      
+      props.onSubmit({...res.data, ...values})
     })
   }
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
 
   return (
     <>
@@ -98,6 +104,7 @@ function UserForm() {
                   <SelectContent>
                     <SelectItem value="Male">Male</SelectItem>
                     <SelectItem value="Female">Female</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -122,7 +129,7 @@ function UserForm() {
             name="avgGlucoseLevel"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Average Glucose Level</FormLabel>
+                <FormLabel>Average Glucose Level (mg/dL)</FormLabel>
                 <FormControl>
                   <Input type="number" placeholder="Your average glucose level" {...field} />
                 </FormControl>
